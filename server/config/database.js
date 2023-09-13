@@ -5,7 +5,7 @@ const { MONGODB_URL } = process.env;
 
 exports.connect = () => {
 	mongoose
-		.connect(MONGODB_URL, {
+		.connect(`${MONGODB_URL}`, {
 			useNewUrlparser: true,
 			useUnifiedTopology: true,
 		})
