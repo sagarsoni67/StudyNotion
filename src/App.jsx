@@ -1,11 +1,7 @@
 import { useEffect } from "react"
 import "./App.css"
-// Redux
 import { useDispatch, useSelector } from "react-redux"
-// React Router
 import { Route, Routes, useNavigate } from "react-router-dom"
-
-// Components
 import Navbar from "./components/Common/Navbar"
 import OpenRoute from "./components/core/Auth/OpenRoute"
 import PrivateRoute from "./components/core/Auth/PrivateRoute"
@@ -25,7 +21,6 @@ import CourseDetails from "./pages/CourseDetails"
 import Dashboard from "./pages/Dashboard"
 import Error from "./pages/Error"
 import ForgotPassword from "./pages/ForgotPassword"
-// Pages
 import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
@@ -45,7 +40,6 @@ function App() {
       const token = JSON.parse(localStorage.getItem("token"))
       dispatch(getUserDetails(token, navigate))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -57,7 +51,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="courses/:courseId" element={<CourseDetails />} />
         <Route path="catalog/:catalogName" element={<Catalog />} />
-        {/* Open Route - for Only Non Logged in User */}
         <Route
           path="login"
           element={
@@ -98,7 +91,6 @@ function App() {
             </OpenRoute>
           }
         />
-        {/* Private Route - for Only Logged in User */}
         <Route
           element={
             <PrivateRoute>
@@ -106,10 +98,8 @@ function App() {
             </PrivateRoute>
           }
         >
-          {/* Route for all users */}
           <Route path="dashboard/my-profile" element={<MyProfile />} />
           <Route path="dashboard/Settings" element={<Settings />} />
-          {/* Route only for Instructors */}
           {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
             <>
               <Route path="dashboard/instructor" element={<Instructor />} />
@@ -121,7 +111,6 @@ function App() {
               />
             </>
           )}
-          {/* Route only for Students */}
           {user?.accountType === ACCOUNT_TYPE.STUDENT && (
             <>
               <Route
@@ -134,7 +123,6 @@ function App() {
           <Route path="dashboard/settings" element={<Settings />} />
         </Route>
 
-        {/* For the watching course lectures */}
         <Route
           element={
             <PrivateRoute>
@@ -152,7 +140,6 @@ function App() {
           )}
         </Route>
 
-        {/* 404 Page */}
         <Route path="*" element={<Error />} />
       </Routes>
     </div>

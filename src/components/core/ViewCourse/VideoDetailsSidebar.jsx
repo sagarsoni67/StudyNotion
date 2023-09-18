@@ -3,7 +3,6 @@ import { BsChevronDown } from "react-icons/bs"
 import { IoIosArrowBack } from "react-icons/io"
 import { useSelector } from "react-redux"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
-
 import IconBtn from "../../Common/IconBtn"
 
 export default function VideoDetailsSidebar({ setReviewModal }) {
@@ -35,7 +34,6 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
       setActiveStatus(courseSectionData?.[currentSectionIndx]?._id)
       setVideoBarActive(activeSubSectionId)
     })()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [courseSectionData, courseEntireData, location.pathname])
 
   return (
@@ -73,15 +71,13 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
               onClick={() => setActiveStatus(course?._id)}
               key={index}
             >
-              {/* Section */}
+          
               <div className="flex flex-row justify-between bg-richblack-600 px-5 py-4">
                 <div className="w-[70%] font-semibold">
                   {course?.sectionName}
                 </div>
                 <div className="flex items-center gap-3">
-                  {/* <span className="text-[12px] font-medium">
-                    Lession {course?.subSection.length}
-                  </span> */}
+                 
                   <span
                     className={`${
                       activeStatus === course?.sectionName
@@ -94,7 +90,6 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
                 </div>
               </div>
 
-              {/* Sub Sections */}
               {activeStatus === course?._id && (
                 <div className="transition-[height] duration-500 ease-in-out">
                   {course.subSection.map((topic, i) => (
