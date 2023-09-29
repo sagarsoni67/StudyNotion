@@ -98,7 +98,6 @@ export function login(email, password, navigate) {
       if (!response.data.success) {
         throw new Error(response.data.message)
       }
-
       toast.success("Login Successful")
       dispatch(setToken(response.data.token))
       const userImage = response.data?.user?.image
