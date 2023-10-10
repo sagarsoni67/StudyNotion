@@ -1,6 +1,3 @@
-if(process.env.NODE_ENV !=="production"){
-	require("dotenv").config();
-}
 const express = require("express");
 const app = express();
 const userRoutes = require("./routes/user");
@@ -17,7 +14,7 @@ const dotenv = require("dotenv");
 
 const PORT = process.env.PORT || 4000;
 
-// dotenv.config();
+dotenv.config();
 
 database.connect();
 
